@@ -1,0 +1,78 @@
+<header>
+<nav class="navbar navbar-light bg-light head">
+  <a class="navbar-brand m_nav"> Movie Search App </a>
+  <div class="form-inline m_form">
+    <div class="input-group">
+	   <!-- <i class="fa fa-search"> </i>  -->
+		<input type="search" class="form-control sear" placeholder="Search Movie by Name" [(ngModel)]="movie_name" aria-label="Search" />
+	</div>
+  </div>
+</nav>
+</header>
+
+<div class="container-fluid content">
+
+    <div class="row">
+	
+	    <div class="float-left country-filters form-inline">
+		    <h5 class="f_text"> Filter By Country </h5>
+		    <select class="form-control form-control-lg ff" [(ngModel)]="selectedCountry" name="f_country">			    
+			    <option *ngFor="let country of countries" [value]="country"> {{ country }} </option>
+			</select>
+		</div>
+		
+		<div class="float-right language-filters form-inline">
+		    <h5 class="f_text"> Filter By Language  </h5>
+		    <select class="form-control form-control-lg ff" [(ngModel)]="selectedLanguage" name="f_language">			    
+			    <option *ngFor="let language of languages" [value]="language"> {{ language }} </option>
+			</select>
+		</div>
+		
+	</div>
+
+    <div class="row">
+			
+	    <div *ngFor="let movie of movies |search: movie_name | countryfilter: selectedCountry | languagefilter: selectedLanguage | paginate: {itemsPerPage: 10,currentPage: p}" class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+		    
+			<div class="card">
+			    <div class="card-header text-center">
+				    <h5 >{{ movie.movie_title }} </h5> by {{ movie.director_name }}
+				</div>
+
+                <div class="card-body">
+				    <div class="actors text-center">
+					    <p> <span class="tit"> Lead Actors : </span>{{ movie.actor_1_name }} , {{ movie.actor_2_name }}  </p> 
+					</div>
+					
+					<div class="row m_row">
+					    <div class="col-lg-6 col-md-6 col-sm-6">
+						    <div> <span class="tit"> Language: </span>{{ movie.language}}   </div>
+						    <div> <span class="tit"> Country : </span>{{movie.country}} </div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+						    <div> <span class="tit"> Content Rating: </span>{{ movie.content_rating}}   </div>
+						    <div> <span class="tit"> Budget : </span> {{movie.budget}} </div>
+							<div> <span class="tit"> Title Year: </span>{{ movie.title_year }} </div>
+						</div>
+					</div>
+					
+					<div class="text-center">
+					   <a href="{{movie.movie_imdb_link}}"> Go to IMDP Profile </a>
+					</div>
+					
+                </div>
+				
+				<div class="card-footer text-center">
+				    {{ movie.genres }}
+				</div>				
+            </div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="pagi text-center">
+      <pagination-controls (pageChange)="p = $event"> </pagination-controls>
+    </div>
+	
+</div>

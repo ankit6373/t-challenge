@@ -1,0 +1,82 @@
+.head{
+	background-color: #43CBCA!important;
+	color: #fff;
+}
+
+
+input[type="search"]{
+	border: none;
+    background-color: #e9f6fe;
+}
+
+.content{
+	padding-top: 5%;
+	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/deep/ .ngx-pagination  {
+    padding-top : 30px;
+}
+
+.card{
+	margin-top: 3%;
+}
+
+.tit{
+	color: #5fba7d;
+}
+
+.card-header,.card-footer{
+	background-color: #43CBCA;
+}
+
+.card-footer{
+	text-transform: Uppercase;
+}
+
+
+@media only screen and (min-width: 1000px)
+{
+    
+	.country-filters{
+	    margin-left: 20%;
+		font-size: 20px;
+    }
+
+    .language-filters{
+	    margin-left: 20%;
+	    font-size: 20px;
+    }
+	
+	.f_text{
+		display: inline;
+	}
+	
+	.ff{
+		margin-left: 20px;
+	}
+	    
+}
+
+
+@media only screen and (max-width: 500px)
+{
+    .m_nav{
+		text-align: center;
+		margin: auto 0;
+		width: 100%;
+	}
+	
+	.m_form{
+		width: 100%;
+	}
+	
+	.country-filters, .language-filters{
+	    margin-left: 3%;
+    }
+	
+	.m_row{
+		text-align: center !important;
+	}
+}
+
